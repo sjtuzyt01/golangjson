@@ -20,7 +20,7 @@ func NewJsonStruct () *JsonStruct {
 
 
 
-func (self *JsonStruct) Load (filename string, v interface{}) {
+func (self *JsonStruct) Load (filename string, Cfg interface{}) {
 
 	data, err := io.ReadFile(filename)
 
@@ -32,9 +32,9 @@ func (self *JsonStruct) Load (filename string, v interface{}) {
 
 	datajson := []byte(data)
 
-	fmt.Println(datajson)
+	//fmt.Println(datajson)
 
-	err = json.Unmarshal(datajson, v)
+	err = json.Unmarshal(datajson, Cfg)
 
 	if err != nil{
 
@@ -46,44 +46,53 @@ func (self *JsonStruct) Load (filename string, v interface{}) {
 
 
 
-type ValueTestAtmp1 struct{
+type TDB struct {
+	SzIP       string
 
-	StringValue string
+	SzPort     string
 
-	NumericalValue int
+	SzUser     string
 
-	BoolValue bool
-
+	SzPassword string
 }
 
-type ValueTestAtmp2 struct{
+type Influxdb struct {
+	Addr       string
 
-	FloatValue float64
+	LocalAddr  string
 
+	Username   string
+
+	Password   string
+
+	StartTime  string
+
+	EndTime    string
+
+	chWindCode string
+
+	chMarket   string
 }
 
-type testdata struct {
+type conf struct {
 
-	ValueTestA ValueTestAtmp1
+	TDBConf TDB
 
-	ValueTestB ValueTestAtmp2
+	InfluxdbConf Influxdb
 
 }
-
-
 
 func main() {
 
 	JsonParse := NewJsonStruct()
 
-	v := testdata{}
+	Cfg := conf{}
 
-	JsonParse.Load("conf.json", &v)
+	JsonParse.Load("conf.json", &Cfg)
 
-	fmt.Println(v)
+	fmt.Println(Cfg)
 
-	fmt.Println(v.ValueTestA.StringValue)
-
+	fmt.Println(Cfg.InfluxdbConf.chWindCode)
 }
 
 

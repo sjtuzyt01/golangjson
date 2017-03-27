@@ -1,19 +1,34 @@
 {
 
-  "ValueTestA":{
+  "THandle":{
 
-    "StringValue": "127.1.1.1",
+    "SzIP":"114.80.154.34",
 
-    "NumericalValue":1233,
+    "SzPort":"6261",
 
-    "BoolValue":false
+    "SzUser":"TD3446699001",
+
+    "SzPassword":"43449360"
 
   },
 
-  "ValueTestB":{
+  "Influxdb":{
 
-    "FloatValue":123.456
+    "Addr":"http://114.80.253.159:8086",
 
+    "LocalAddr":"http://localhost:8086",
+
+    "Username":"mingshi",
+
+    "Password":"mingshi888",
+
+    "StartTime":"20170101",
+
+    "EndTime":"20170131",
+
+    "chWindCode":"000001.SZ",
+
+    "chMarket":"SZ-2-0"
   }
 
 }
