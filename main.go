@@ -4,6 +4,7 @@ import (
 	io "io/ioutil"
 	"encoding/json"
 	"fmt"
+	"strconv"
 )
 
 type JsonStruct struct{
@@ -93,6 +94,13 @@ type conf struct {
 	Functionconf Function `json:"Function"`
 }
 
+func timeSplit(time string)(int, int, int){
+	year,_ := strconv.Atoi(time[0:4])
+	month,_ := strconv.Atoi(time[4:6])
+	day,_ := strconv.Atoi(time[6:8])
+	return year, month, day
+}
+
 func main() {
 
 	JsonParse := NewJsonStruct()
@@ -103,7 +111,13 @@ func main() {
 
 	fmt.Println(cfg)
 
-	fmt.Println(cfg.Influxconf.LocalAddr)
+	startYear, startMonth, startDay := timeSplit(cfg.Influxconf.StartTime)
+
+	endYear, endMonth, endDay := timeSplit(cfg.Influxconf.EndTime)
+
+	println(startYear, startMonth, startDay)
+
+	println(endYear, endMonth, endDay)
 }
 
 
