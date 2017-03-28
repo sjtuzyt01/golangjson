@@ -2,7 +2,7 @@ package main
 
 import (
 	io "io/ioutil"
-	json "encoding/json"
+	"encoding/json"
 	"fmt"
 )
 
@@ -20,7 +20,7 @@ func NewJsonStruct () *JsonStruct {
 
 
 
-func (self *JsonStruct) Load (filename string, Cfg interface{}) {
+func (self *JsonStruct) Load (filename string, v interface{}) {
 
 	data, err := io.ReadFile(filename)
 
@@ -32,9 +32,7 @@ func (self *JsonStruct) Load (filename string, Cfg interface{}) {
 
 	datajson := []byte(data)
 
-	//fmt.Println(datajson)
-
-	err = json.Unmarshal(datajson, Cfg)
+	err = json.Unmarshal(datajson, v)
 
 	if err != nil{
 
@@ -46,7 +44,7 @@ func (self *JsonStruct) Load (filename string, Cfg interface{}) {
 
 
 
-type TDB struct {
+type Thandle struct {
 	SzIP       string
 
 	SzPort     string
@@ -69,16 +67,16 @@ type Influxdb struct {
 
 	EndTime    string
 
-	chWindCode string
+	ChWindCode string
 
-	chMarket   string
+	ChMarket   string
 }
 
 type conf struct {
 
-	TDBConf TDB
+	TDBConf Thandle `json:"Thandle"`
 
-	InfluxdbConf Influxdb
+	Influxconf Influxdb  `json:"Influxdb"`
 
 }
 
@@ -86,13 +84,13 @@ func main() {
 
 	JsonParse := NewJsonStruct()
 
-	Cfg := conf{}
+	cfg := conf{}
 
-	JsonParse.Load("conf.json", &Cfg)
+	JsonParse.Load("conf.json", &cfg)
 
-	fmt.Println(Cfg)
+	fmt.Println(cfg)
 
-	fmt.Println(Cfg.InfluxdbConf.chWindCode)
+	fmt.Println(cfg.Influxconf.LocalAddr)
 }
 
 

@@ -1,6 +1,6 @@
 {
 
-  "THandle":{
+  "Thandle":{
 
     "SzIP":"114.80.154.34",
 
@@ -26,9 +26,8 @@
 
     "EndTime":"20170131",
 
-    "chWindCode":"000001.SZ",
+    "ChWindCode":"000001.SZ",
 
-    "chMarket":"SZ-2-0"
+    "ChMarket":"SZ-2-0"
   }
-
 }
