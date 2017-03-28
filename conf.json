@@ -29,5 +29,18 @@
     "ChWindCode":"000001.SZ",
 
     "ChMarket":"SZ-2-0"
+  },
+
+  "Function":{
+
+    "KLine":true,
+
+    "Tick":true,
+
+    "Transaction":true,
+
+    "Order":true,
+
+    "OrderQueue":true
   }
 }

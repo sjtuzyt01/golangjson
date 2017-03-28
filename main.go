@@ -72,12 +72,25 @@ type Influxdb struct {
 	ChMarket   string
 }
 
+type Function struct {
+	KLine       bool
+
+	Tick        bool
+
+	Transaction bool
+
+	Order       bool
+
+	OrderQueue  bool
+}
+
 type conf struct {
 
 	TDBConf Thandle `json:"Thandle"`
 
 	Influxconf Influxdb  `json:"Influxdb"`
 
+	Functionconf Function `json:"Function"`
 }
 
 func main() {
